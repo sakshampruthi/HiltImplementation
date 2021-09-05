@@ -1,6 +1,7 @@
 package com.saksham.hiltimplementation.network
 
 import com.saksham.hiltimplementation.model.Blog
+import com.saksham.hiltimplementation.room.BlogCacheEntity
 import com.saksham.hiltimplementation.utils.EntityMapper
 import javax.inject.Inject
 
@@ -24,5 +25,9 @@ class NetworkMapper @Inject constructor(): EntityMapper<BlogNetworkEntity,Blog> 
             category = domainModel.category
 
         )
+    }
+
+    fun mapFromEntityList(entities: List<BlogNetworkEntity>):List<Blog>{
+        return entities.map { mapFromEntity(it) }
     }
 }
